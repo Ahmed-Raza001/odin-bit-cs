@@ -18,6 +18,7 @@ class node {
 
 class tree {
     constructor(inputArray) {
+        this.inputArray = [... removeDuplicates(mergeSort(inputArray))];
         this.root = this.buildTree (inputArray, 0, inputArray.length -1);
         this.preOrderData = [];
         this.inOrderData = [];
@@ -200,12 +201,12 @@ insert(value, root = this.root) {
     }
 
     traverse (root, array) {
-        if (array !== undefined) array.push (this.root.data);
+        if (array !== undefined) array.push(root.data);
         if(root.left !== null) {
             this.traverse(root.left, array);
         }
 
-        if(this.root.right !== null) {
+        if(root.right !== null) {
             this.traverse(root.right, array);
         }
         return array;
@@ -241,7 +242,7 @@ function mergeSort (inputArray) {
 };
 
 function removeDuplicates(inputArray) {
-    return [...new set (inputArray)];
+    return [...new Set (inputArray)];
 }
 
 let testInputArray = [1,2,3,4,5,6,7];
